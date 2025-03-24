@@ -2,12 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/felveteli.css'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import TablazatAgazat from './TablazatAgazat';
+import TablazatElozetes from './TablazatElozetes';
 
 function Home(){
     const [selectedAgazat, setSelectedAgazat] = useState('');
     const navigate = useNavigate();
-
+    
    
     const handleSelectChange = (p) => {
         setSelectedAgazat(p.target.value);
@@ -64,7 +64,7 @@ function Home(){
                         <button onClick={handleDataClick}>Adatok</button>       
                     </div>
                     <div className="col-md-6">
-                        <TablazatAgazat/>
+                        <TablazatElozetes/>
                     </div>       
                 </div>
             </div>

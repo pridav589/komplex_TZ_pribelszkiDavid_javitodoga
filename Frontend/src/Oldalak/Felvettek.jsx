@@ -1,4 +1,3 @@
-import Select from "./Select.jsx";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -35,27 +34,24 @@ function Felvettek() {
                         <p><img src="/e-mail-marketing-2745489__340.jpg" className="img-thumbnail" alt="marketing" title="marketing" /></p>
                     </div>
                     <h3>A Felvettek rangsora, nyelvi előkészítő. A maximálisan felvehető tanulók száma 32 fő.</h3>
-                    <div className="col-md-6">
-                        <p>A Választott ágazat: {agazat && agazat}</p>
-                        <Select/>
-                    </div>
+                    
                 </div>
             </div>
             <div>
-                <table border="1">
+                <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>Tanuló neve</th>
-                            <th>Ágazat</th>
-                            <th>Összes pontszám</th>
+                            <th scope="col">Tanuló neve</th>
+                            <th scope="col">Ágazat</th>
+                            <th scope="col">Összes pontszám</th>
                         </tr>
                     </thead>
                     <tbody>
                         {felvettek.map((tanulo, index) => (
                             <tr key={index}>
-                                <td>{tanulo.nev}</td>
-                                <td>{tanulo.agazat}</td>
-                                <td>{tanulo.osszpont} pont</td>
+                                <td scope="row">{tanulo.nev}</td>
+                                <td scope="row">{tanulo.agazat}</td>
+                                <td scope="row">{tanulo.osszpont} pont</td>
                             </tr>
                         ))}
                     </tbody>

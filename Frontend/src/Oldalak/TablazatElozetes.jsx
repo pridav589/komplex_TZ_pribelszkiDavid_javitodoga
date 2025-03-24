@@ -4,7 +4,7 @@ import "../css/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "tachyons";
 
-function TablazatAgazat() {
+function TablazatElozetes() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -47,4 +47,4 @@ function TablazatAgazat() {
     );
 }
 
-export default TablazatAgazat;
+export default TablazatElozetes;

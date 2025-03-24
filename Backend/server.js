@@ -26,7 +26,7 @@ db.connect(err =>{
         console.log('Connected to MySQL');
     }
 })
- 
+
  
 app.get('/elozetes-rangsor', (req, res) => {
         const query = `
@@ -49,39 +49,6 @@ app.get('/elozetes-rangsor', (req, res) => {
         });
 });
  
- 
-app.get('/felvettek-rangsora', (req, res) => {
-        const query = `
-            SELECT
-                tagozatok.agazat AS "Ágazat",
-                COUNT(jelentkezesek.diak) AS "Jelentkezők száma",
-                SUM(diakok.hozott + diakok.kpmagy + diakok.kpmat) AS "osszpontszam"
-                FROM jelentkezesek
-                JOIN diakok ON jelentkezesek.diak = diakok.oktazon
-                JOIN tagozatok ON jelentkezesek.tag = tagozatok.akod
-                WHERE tagozatok.agazat IN ('Informatika', 'Elektronika')
-                AND tagozatok.nyek = TRUE
-                GROUP BY tagozatok.agazat
-                ORDER BY osszpontszam DESC;
-        `;
- 
-        db.query(query, (err, rows) => {
-            if (err) {
-                console.error("Hiba a rangsor lekérdezése közben:", err);
-                return res.status(500).send("Hiba történt az adatok lekérésekor.");
-            }
-            res.json(rows);
-        });
-});
- 
- 
-app.get('/agazatok', async (req, res) => {
-        const query = "SELECT DISTINCT agazat AS Ágazat FROM tagozatok";
-        db.query(query, (err, result) => {
-            if (err) return res.status(500).send("Hiba történt az adatok lekérésekor.");
-            res.json(result);
-        });
-});
  
 app.get('/felvettek/:agazat', (req, res) => {
     const { agazat } = req.params;
